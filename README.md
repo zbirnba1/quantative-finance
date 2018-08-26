@@ -9,12 +9,12 @@ Trade equities with python algorithms.
 
 # Summary
 The purpose of this library is to gather and store the necessary financial data to enable the use of algorithmic traders.  The following data sources are currently implemented and stored to varrying degrees:
-- [intrinio](https://intrinio.com/) 
-- [iex](https://iextrading.com/)
-- [nasdaq](https://www.nasdaq.com/)
-- [robinhood](https://robinhood.com/)
-- [quandl](https://www.quandl.com/)
-- [federal reserve economic data](https://fred.stlouisfed.org/)
+- [intrinio](https://intrinio.com/) -fundamental data & price history
+- [iex](https://iextrading.com/) -fundamental data
+- [nasdaq](https://www.nasdaq.com/) -company information & short interest ratios
+- [robinhood](https://robinhood.com/) -earnings releases
+- [quandl](https://www.quandl.com/) -macroeconomic data
+- [federal reserve economic data](https://fred.stlouisfed.org/) -macroeconomic data
 
 Once the data has been stored, it is then processed to determine optimal porfolios for investment per the algorithm selected.  Currently the only algorithm in use is the [quantative value](https://www.amazon.com/Quantitative-Value-Web-Site-Practitioners/dp/1118328078) method created by Dr. Wesley Gray of [alpha architect](https://alphaarchitect.com/) and Tobias Carlisle of [carbon beach](http://carbonbeacham.com).
 
@@ -28,6 +28,7 @@ In general, the flow of information looks like this:
 
 # Code Description
 [requestswrapper.py](src/requestswrapper.py) - Issues get/post requests to the python requests module.  The wrapper is designed for error logging/reporting and will automatically retry the request.  This wrapper is used by every other class which needs to pull data from the internet.
+
 [robinhoodwrapper.py](src/robinhoodwrapper.py) - The interface with robinhood's API. This class handles trading and execution, portfolio reading, and other robinhood functions.  Inspired by [robinhood-python](https://github.com/mstrum/robinhood-python) and [Robinhood](https://github.com/sanko/Robinhood)
 
-  
+[intriniowrapper.py](src/intriniowrapper.py) -The interface to intrinio's API.  This class pulls the raw data from intrinio.  Only a subset of the intrinio endpoints have been implemented, mostly those associated with the *US Fundamentals and Stock Prices* subscription. 
