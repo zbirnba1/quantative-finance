@@ -31,4 +31,6 @@ In general, the flow of information looks like this:
 
 [robinhoodwrapper.py](src/robinhoodwrapper.py) - The interface with robinhood's API. This class handles trading and execution, portfolio reading, and other robinhood functions.  Inspired by [robinhood-python](https://github.com/mstrum/robinhood-python) and [Robinhood](https://github.com/sanko/Robinhood)
 
-[intriniowrapper.py](src/intriniowrapper.py) -The interface to intrinio's API.  This class pulls the raw data from intrinio.  Only a subset of the intrinio endpoints have been implemented, mostly those associated with the *US Fundamentals and Stock Prices* subscription. 
+[intriniowrapper.py](src/intriniowrapper.py) -The interface to intrinio's API.  This is a paid subscription and requires authentication.  This class pulls the raw data from intrinio.  Only a subset of the intrinio endpoints have been implemented, mostly those associated with the *US Fundamentals and Stock Prices* subscription.
+
+[iexwrapper.py](src/iexwrapper.py) -The interface to IEX's API.  IEX may require a user token, however you can register for one for free.  The only data which it can pull as of 8/26/18 is the stats endoint as any other data is superseded by the intrinio data.  More endpoints will be added as required by the algorithms.
