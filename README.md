@@ -28,22 +28,33 @@ In general, the flow of information looks like this:
 
 # Code Description
 ## Wrappers
-[requestswrapper.py](src/requestswrapper.py) - Issues get/post requests to the python requests module.  The wrapper is designed for error logging/reporting and will automatically retry the request.  This wrapper is used by every other class which needs to pull data from the internet.
-
-[robinhoodwrapper.py](src/robinhoodwrapper.py) - The interface with robinhood's API. This class handles trading and execution, portfolio reading, and other robinhood functions.  Inspired by [robinhood-python](https://github.com/mstrum/robinhood-python) and [Robinhood](https://github.com/sanko/Robinhood)
-
-[intriniowrapper.py](src/intriniowrapper.py) -The interface to intrinio's API.  This is a paid subscription and requires authentication.  This class pulls the raw data from intrinio.  Only a subset of the intrinio endpoints have been implemented, mostly those associated with the *US Fundamentals and Stock Prices* subscription.
-
-[iexwrapper.py](src/iexwrapper.py) -The interface to IEX's API.  IEX may require a user token, however you can register for one for free.  The only data which it can pull as of 8/26/18 is the stats endoint as any other data is superseded by the intrinio data.  More endpoints will be added as required by the algorithms.
-
-[nasdaqwrapper.py](src/nasdaqwrapper.py) -The interface to the nasdaq webpage.  This does not require an API and parses the html from page queries.  As of 8/26/18 the use of nasdaq data is **NOT** required for the algorithm to run as the shortInterest data is now captured by the IEX wrapper.
-
-[quandlwrapper.py](src/quandlwrapper.py) -The interface to quandl data.  Certain endpoints require a free API token.  This wrapper is not used by the quantative value algorithm.
-
-[fredwrapper.py](src/fredwrapper.py) -The interface to federal reserve macroeconomic data.  Use required an API which is [free](https://research.stlouisfed.org/docs/api/api_key.html) to obtain.
-
-[configwrapper.py](src/configwrapper.py) -Small class which wraps configparser and is used for reading the configuration file.
-
+[requestswrapper.py](src/requestswrapper.py) - Issues get/post requests to the python requests module.  The wrapper is designed for error logging/reporting and will automatically retry the request.  This wrapper is used by every other class which needs to pull data from the internet.  
+[robinhoodwrapper.py](src/robinhoodwrapper.py) - The interface with robinhood's API. This class handles trading and execution, portfolio reading, and other robinhood functions.  Inspired by [robinhood-python](https://github.com/mstrum/robinhood-python) and [Robinhood](https://github.com/sanko/Robinhood)  
+[intriniowrapper.py](src/intriniowrapper.py) -The interface to intrinio's API.  This is a paid subscription and requires authentication.  This class pulls the raw data from intrinio.  Only a subset of the intrinio endpoints have been implemented, mostly those associated with the *US Fundamentals and Stock Prices* subscription.  
+[iexwrapper.py](src/iexwrapper.py) -The interface to IEX's API.  IEX may require a user token, however you can register for one for free.  The only data which it can pull as of 8/26/18 is the stats endoint as any other data is superseded by the intrinio data.  More endpoints will be added as required by the algorithms.  
+[nasdaqwrapper.py](src/nasdaqwrapper.py) -The interface to the nasdaq webpage.  This does not require an API and parses the html from page queries.  As of 8/26/18 the use of nasdaq data is **NOT** required for the algorithm to run as the shortInterest data is now captured by the IEX wrapper.  
+[quandlwrapper.py](src/quandlwrapper.py) -The interface to quandl data.  Certain endpoints require a free API token.  This wrapper is not used by the quantative value algorithm.  
+[fredwrapper.py](src/fredwrapper.py) -The interface to federal reserve macroeconomic data.  Use required an API which is [free](https://research.stlouisfed.org/docs/api/api_key.html) to obtain.  
+[configwrapper.py](src/configwrapper.py) -Small class which wraps configparser and is used for reading the configuration file.  
 [alphavantagewrapper.py](src/alphavantagewrapper.py) -Interface to [alphavantage](https://www.alphavantage.co/).  Provides technical indicators and historical price data.  This wrapper is not used by the quantative value algorithm. 
 
-## Database Updaters
+## Data Updaters
+Classes to take data from the remote sources (using the wrappers) and place it in a mongodb.  The pulldata_*vendor* classes are "intelligent", meaning they will only update what is required, limiting the number of external API calls which are issued.   
+
+[pulldata_robinhood.py](src/pulldata_robinhood.py).  
+[pulldata_alphavantage.py](src/pulldata_alphavantage.py)  
+[pulldata_quandl.py](src/pulldata_quandl.py)  
+[pulldata_nasdaq.py](src/pulldata_nasdaq.py)  
+[pulldata_intrinio.py](src/pulldata_intrinio.py)  
+[pulldata_iex.py](src/pulldata_iex.py)  
+[pulldata_fred.py](src/pulldata_fred.py)  
+
+[pulldata.py](src/pulldata.py) - Script with a *main* method which calls each of the above pulldata_*vendor* methods to update all database data.  For optimal perfomance, this should be called once per trading day, after market close.
+
+## Database Connectors
+[mongomanager.py](src/mongomanager.py) - Class which connects to an existing mongo database.  Authentication is strongly recommended.  This class is heavily used by the rest of the code base.
+
+## Data Processing
+[sec4parser.py](src/sec4parser.py) - This script contains methods which will parse through SEC form 4 (insider transcations) filing data.  
+[commonqueries.py](src/commonqueries.py) - This class is used to issue some common queries to the database, such as returning a list of all companies, or returning a pandas DataFrame of a company's fundamentals. 
+[quantvaluedata.py](src/quantvaluedata.py) - This class is used to get specific fundamental values for a specific company.  All methods use either a historical prices DataFrame and/or a 10-K/10-Q statements DataFrame.  Both the prices and statements DataFrames can be queried from commonqueries.py.  
