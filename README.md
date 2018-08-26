@@ -27,6 +27,7 @@ In general, the flow of information looks like this:
 ![drawing](https://docs.google.com/drawings/d/1lDbMzVsnxiupsyEsrTXJx_VcnjeB-13cCeJVT6WFQCs/export/png)
 
 # Code Description
+## Wrappers
 [requestswrapper.py](src/requestswrapper.py) - Issues get/post requests to the python requests module.  The wrapper is designed for error logging/reporting and will automatically retry the request.  This wrapper is used by every other class which needs to pull data from the internet.
 
 [robinhoodwrapper.py](src/robinhoodwrapper.py) - The interface with robinhood's API. This class handles trading and execution, portfolio reading, and other robinhood functions.  Inspired by [robinhood-python](https://github.com/mstrum/robinhood-python) and [Robinhood](https://github.com/sanko/Robinhood)
@@ -37,4 +38,12 @@ In general, the flow of information looks like this:
 
 [nasdaqwrapper.py](src/nasdaqwrapper.py) -The interface to the nasdaq webpage.  This does not require an API and parses the html from page queries.  As of 8/26/18 the use of nasdaq data is **NOT** required for the algorithm to run as the shortInterest data is now captured by the IEX wrapper.
 
+[quandlwrapper.py](src/quandlwrapper.py) -The interface to quandl data.  Certain endpoints require a free API token.  This wrapper is not used by the quantative value algorithm.
 
+[fredwrapper.py](src/fredwrapper.py) -The interface to federal reserve macroeconomic data.  Use required an API which is [free](https://research.stlouisfed.org/docs/api/api_key.html) to obtain.
+
+[configwrapper.py](src/configwrapper.py) -Small class which wraps configparser and is used for reading the configuration file.
+
+[alphavantagewrapper.py](src/alphavantagewrapper.py) -Interface to [alphavantage](https://www.alphavantage.co/).  Provides technical indicators and historical price data.  This wrapper is not used by the quantative value algorithm. 
+
+## Database Updaters
