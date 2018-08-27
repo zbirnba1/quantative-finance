@@ -142,3 +142,27 @@ port=27017
 #live_trade=True
 
 ```  
+
+# User Document Example
+In order to execute trades with robinhood, and view the performance using google docs, a user specific mongodb document is required.
+
+```json
+{
+    "_id" : "<robinhood_username>",
+    "username" : "<robinhood_username>",
+    "googlesheetid" : "<google_sheet_id>", //the id of the google sheet to use for performance, it does not need to be populated prior to the first run
+    "transfer" : {
+        "amount" : 50, //dollars to transfer
+        "frequency" : "daily", //how often to transfer
+        "id" : "<ach_transfer_id>", //the id of the ach transfer to use, typically a bank account.
+        "frequency_multiple" : 1, //how often to transfer
+        "last_transfer_id" : "<last_robinhood_transfer>" //this does not need to be populated prior to the first run
+    },
+    "trade" : {
+        "options_trade" : true, //use options in trading
+        "live_trade" : true //actually trade stocks with real money
+    },
+    "password" : "<robinhood_password>",
+    "email" : "<email>" //use a gmail address
+}
+```
