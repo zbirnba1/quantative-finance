@@ -149,7 +149,7 @@ port=27017
 # User Document Example
 In order to execute trades with robinhood, and view the performance using google docs, a user specific mongodb document is required.
 
-```json
+```
 {
     "_id" : "<robinhood_username>",
     "username" : "<robinhood_username>",
