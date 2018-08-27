@@ -66,4 +66,79 @@ Classes to take data from the remote sources (using the wrappers) and place it i
 
 ## Performance Tracking
 - [googlesheetuploader.py](src/googlesheetuploader.py) - Contains methods to upload pandas dataframes to google sheets.  Use of this code requies a google cloud service file.  Additional directions to create this file will be added at a later date.  
-- [performance.py](src/performance.py) - Will upload performance information, macroeconomic information, recommended portfolio information, and current holdings to a google sheet.  
+- [performance.py](src/performance.py) - Will upload performance information, macroeconomic information, recommended portfolio information, and current holdings to a google sheet.
+
+# Configuration File
+A configuration file is required to run this code, an example is as follows:
+
+```apacheconf
+#financial data is stored in a mongo database, the code is hardcoded to use a dictionary which must have the following collections defined. 
+[FINANCIALDATA_COLLECTIONS]
+iex_symbols=iex_symbols
+iex_stats=iex_stats
+intrinio_companies=intrinio_companies
+intrinio_filings=intrinio_filings
+intrinio_standardized_fundamentals=intrinio_standardized_fundamentals
+intrinio_standardized_financials=intrinio_standardized_financials
+intrinio_standardized_tags_and_labels=intrinio_standardized_tags_and_labels
+intrinio_historical_data=intrinio_historical_data
+intrinio_prices=intrinio_prices
+alphavantage_prices=alphavantage_prices
+robinhood_earnings=robinhood_earnings
+nasdaq_short_interest=nasdaq_short_interest
+nasdaq_companies=nasdaq_companies
+fred_series_observations=fred_series_observations
+intrinio_pull_times=pull_times
+intrinio_standardized_fundamentals_bad_pull_statements=intrinio_standardized_fundamentals_bad_pull_statements
+quandl_timeseries=quandl_timeseries
+robinhood_instruments=robinhood_instruments
+intrinio_bad_figis=intrinio_bad_figis
+intrinio_exchanges=intrinio_exchanges
+intrinio_securities=intrinio_securities
+sec_form4_xmls=sec_form4_xmls
+metrics=metrics
+quantative_value_recommended=qvdf
+
+#Fill in the information to access the mongo database.
+#if there is no uername/password then comment out those lines
+[FINANCIALDATA_MONGO]
+host=
+username=
+password=
+dbname=quant_finance
+port=27017
+
+#If you have at least one user, enter the collection for the users here
+#[USERS_COLLECTIONS]
+#robinhood_users=robinhood_users
+
+#It may be wise to store the users in a seperate database, with seperate authentication.
+#[USERS_MONGO]
+#host=
+#username=
+#password=
+#dbname=quant_finance_users
+#port=27017
+
+#[IEX]
+#token=
+
+#[ALPHAVANTAGE]
+#api_key=
+
+#[QUANDL]
+#api_key=
+
+#[INTRINIO]
+#username=
+#password=
+
+#[GOOGLE_CLOUD]
+#service_file=
+
+#if FALSE is specified here will override anything that the user specified in their own options document
+#[TRADING]
+#trade_options=True #specify
+#live_trade=True
+
+```  
