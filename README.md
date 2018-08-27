@@ -68,6 +68,9 @@ Classes to take data from the remote sources (using the wrappers) and place it i
 - [googlesheetuploader.py](src/googlesheetuploader.py) - Contains methods to upload pandas dataframes to google sheets.  Use of this code requies a google cloud service file.  Additional directions to create this file will be added at a later date.  
 - [performance.py](src/performance.py) - Will upload performance information, macroeconomic information, recommended portfolio information, and current holdings to a google sheet.
 
+## Running the Pipeline
+- [main.py](src/main.py) -The whole pipeline (ccllecting data, processing data, trading, performance tracking) has been implemented inside the main method inside the main.py file.  Just specify a config file to use.
+
 # Configuration File
 A configuration file is required to run this code, an example is as follows:
 
