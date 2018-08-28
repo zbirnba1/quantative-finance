@@ -170,3 +170,12 @@ In order to execute trades with robinhood, and view the performance using google
     "email" : "<email>" //use a gmail address
 }
 ```
+
+If you only want to automate trading, and not do performance tracking in google sheets or automatic transfers the user mongo document is much simpler.
+```
+{
+    "_id" : "<robinhood_username>",
+    "username" : "<robinhood_username>",
+    "password" : "<robinhood_password>"
+}
+```

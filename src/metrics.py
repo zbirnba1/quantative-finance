@@ -138,7 +138,7 @@ class metrics():
 			newdata['valid_trade']=True
 
 		iex_short_interest=self.cq.mongo.db[self.collections['iex_stats']].find_one({'symbol':ticker,'shortDate':{"$gte":(self.last_valid_day-relativedelta(years=1)).strftime('%Y-%m-%d')}})
-		if iex_short_interest is None or 'shortRatio' not in iex_short_interest:
+		if iex_short_interest is None or 'shortRatio' not in iex_short_interest or pd.isnull(iex_short_interest['shortRatio']):
 			newdata['daystocover']=0
 		else:
 			newdata['daystocover'] = float(iex_short_interest['shortRatio'])
