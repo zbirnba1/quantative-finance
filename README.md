@@ -24,7 +24,7 @@ You can see the current [recommended_portfolio][recommended_portfolio] using the
 Once the portfolio has been generated it can then be connected to any broker with an api.  Currently only the robinhood broker has been integrated.
 
 In general, the flow of information looks like this:
-![drawing](https://docs.google.com/drawings/d/1lDbMzVsnxiupsyEsrTXJx_VcnjeB-13cCeJVT6WFQCs/export/png)
+![drawing1](https://docs.google.com/drawings/d/1lDbMzVsnxiupsyEsrTXJx_VcnjeB-13cCeJVT6WFQCs/export/png)
 
 # Code Description
 ## Wrappers
@@ -69,8 +69,8 @@ Classes to take data from the remote sources (using the wrappers) and place it i
 - [performance.py](src/performance.py) - Will upload performance information, macroeconomic information, recommended portfolio information, and current holdings to a google sheet.
 
 ## Running the Pipeline
-- [main.py](src/main.py) -The whole pipeline (collecting data, processing data, trading, performance tracking) has been implemented inside the main method inside the main.py file.  Just specify a config file to use.
-![drawing](https://docs.google.com/drawings/d/1pJDcykrZd1Ch9BnrTuclLc0EWZZpb_eAA-zz7S8IkuQ/export/png)
+- [main.py](src/main.py) -The whole pipeline (collecting data, processing data, trading, performance tracking) has been implemented inside the main method inside the main.py file.  Just specify a config file to use.  
+![drawing2](https://docs.google.com/drawings/d/1pJDcykrZd1Ch9BnrTuclLc0EWZZpb_eAA-zz7S8IkuQ/export/png)
 
 # Configuration File
 A configuration file is required to run this code, an example is as follows:
