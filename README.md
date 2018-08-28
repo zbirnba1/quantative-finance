@@ -69,7 +69,8 @@ Classes to take data from the remote sources (using the wrappers) and place it i
 - [performance.py](src/performance.py) - Will upload performance information, macroeconomic information, recommended portfolio information, and current holdings to a google sheet.
 
 ## Running the Pipeline
-- [main.py](src/main.py) -The whole pipeline (ccllecting data, processing data, trading, performance tracking) has been implemented inside the main method inside the main.py file.  Just specify a config file to use.
+- [main.py](src/main.py) -The whole pipeline (collecting data, processing data, trading, performance tracking) has been implemented inside the main method inside the main.py file.  Just specify a config file to use.
+![drawing](https://docs.google.com/drawings/d/1pJDcykrZd1Ch9BnrTuclLc0EWZZpb_eAA-zz7S8IkuQ/export/png)
 
 # Configuration File
 A configuration file is required to run this code, an example is as follows:
