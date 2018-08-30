@@ -176,6 +176,10 @@ If you only want to automate trading, and not do performance tracking in google 
 {
     "_id" : "<robinhood_username>",
     "username" : "<robinhood_username>",
-    "password" : "<robinhood_password>"
+    "password" : "<robinhood_password>",
+      "trade" : {
+        "options_trade" : true, //use options in trading
+        "live_trade" : true //actually trade stocks with real money
+    }
 }
 ```
