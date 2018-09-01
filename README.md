@@ -7,6 +7,9 @@ Trade equities with python algorithms.
 - You are not to charge or many any money through advertisements or fees using this code.  I am not responsible if Robinhood cancels your account because of misuse of this library.
 - I am not affiliated with robinhood, intrininio, iex, nasdaq, quandl, or any of the companies used in the code.  Please direct support questions regarding their products to them.
 
+# Setup
+- You can find additional setup information in the [readme](/documentation/setup.md).  
+
 # Summary
 The purpose of this library is to gather and store the necessary financial data to enable the use of algorithmic traders.  The following data sources are currently implemented and stored to varrying degrees:
 - [intrinio](https://intrinio.com/) -fundamental data & price history
