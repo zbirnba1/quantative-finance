@@ -18,7 +18,7 @@ The purpose of this library is to gather and store the necessary financial data 
 
 Once the data has been stored, it is then processed to determine optimal porfolios for investment per the algorithm selected.  Currently the only algorithm in use is the [quantative value](https://www.amazon.com/Quantitative-Value-Web-Site-Practitioners/dp/1118328078) method created by Dr. Wesley Gray of [alpha architect](https://alphaarchitect.com/) and Tobias Carlisle of [carbon beach](http://carbonbeacham.com).
 
-[recommended_portfolio]:https://docs.google.com/spreadsheets/d/e/2PACX-1vT58ZDK65rGm5_jdGMAPKn1WDUdL27H4jYTyJUl9t_5WKmPvdadHyA7luFbnpf_ljTzneSax6lHtJpG/pubhtml?gid=766300694&single=true
+[recommended_portfolio]:https://docs.google.com/spreadsheets/d/e/2PACX-1vT58ZDK65rGm5_jdGMAPKn1WDUdL27H4jYTyJUl9t_5WKmPvdadHyA7luFbnpf_ljTzneSax6lHtJpG/pubhtml?gid=766300694
 You can see the current [recommended_portfolio][recommended_portfolio] using the quantative value algorithm.
 
 Once the portfolio has been generated it can then be connected to any broker with an api.  Currently only the robinhood broker has been integrated.
