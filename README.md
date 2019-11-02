@@ -1,14 +1,17 @@
+# Announcement 
+- This code base is now being slowly updated over the next several weeks to a working version. Stay tuned.
+
 # quantative-finance
 Trade equities with python algorithms.
 
 # Legal Disclaimer
 - The code in this repository may have bugs which could result in real financial consequences.  Please inspect the code prior to execution as you are responsible for anything you execute.
-- Robinhood is the assumed broker for execution.  Their API is currently not officially documented or supported.  Several times in the past they have modified the use of the api and as a result, this code stopped working for some time, such an even may happen again.
-- You are not to charge or many any money through advertisements or fees using this code.  I am not responsible if Robinhood cancels your account because of misuse of this library.
-- I am not affiliated with robinhood, intrininio, iex, nasdaq, quandl, or any of the companies used in the code.  Please direct support questions regarding their products to them.
+- [alpaca](https://alpaca.markets/) is the assumed broker for execution. 
+- You are not to charge or request any money through advertisements or fees using this code.
+- I am not affiliated with alpaca, intrininio, iex, nasdaq, quandl, or any of the companies used in the code.  Please direct support questions regarding their products to them.
 
 # Setup
-- You can find additional setup information in the [readme](/documentation/setup.md).  
+- You can find additional setup information in the [readme](/documentation/setup.md).  The setup process is not trivial, if you are lazy and want to simply run the algorithms on my server, go [here](https://drive.google.com/open?id=1rNOE28lhxBtUY5jjfnXwsHQWtIqWV5qq7YZ0csaRSms).
 
 # Summary
 The purpose of this library is to gather and store the necessary financial data to enable the use of algorithmic traders.  The following data sources are currently implemented and stored to varrying degrees:
